@@ -57,3 +57,34 @@
 //   // console.log("John's BMI is higher than Mark's !");
 //   console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`);
 // }
+
+
+// Third exercise from course
+// const dolphins = [96, 108, 89];
+// const koalas = [88, 91, 110];
+
+// const calcAverage = function(arr){
+//   let score = 0
+//   for (let i = 0; i < arr.length; i++) {
+//      score += arr[i] / arr.length
+//   }
+//   return score
+// }
+
+
+// let scoreDolphins = 0
+// for (let i = 0; i < dolphins.length; i++) {
+//   console.log(dolphins[i]);
+//    scoreDolphins += dolphins[i] / dolphins.length
+// }
+// console.log(scoreDolphins);
+
+// const scoreKoalas = (88 + 91 + 110) / 3;
+
+// if (scoreDolphins > scoreKoalas) {
+//   console.log(`Dolphins win the trophy`);
+// } else if (scoreDolphins < scoreKoalas) {
+//   console.log(`Koalas win the trophy`);
+// } else if (scoreKoalas === scoreDolphins) {
+//   console.log(`Both win the trophy`);
+// }
