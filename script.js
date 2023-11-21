@@ -88,3 +88,11 @@
 // } else if (scoreKoalas === scoreDolphins) {
 //   console.log(`Both win the trophy`);
 // }
+
+// CHALLENGE #4 //////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+// const bills = [275,40,430]
+// const bill = 275
+// const tip = bill >= 50 && bill <=300 ? bill*0.15 : bill*0.2
+// console.log(`The bill was ${bill}, the tip was ${tip}, and the final value was ${bill + tip}`);
+// const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
