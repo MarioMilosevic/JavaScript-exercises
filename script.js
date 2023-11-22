@@ -322,3 +322,18 @@ GOOD LUCK 😀
 // }
 // checkWinner(scoreDolphins, scoreKoalas);
 // checkWinner(scoredolphins2, scoreKoalas2)
+
+// CHALLENGE #2 //////////////////////////////////////////////////////////////////////
+
+// const calcTip = function (bill) {
+//   const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+//   return tip;
+// };
+
+// console.log(calcTip(100));
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// console.log(bills, tips);
+
+// const totals = [bills[0] + bills[1] + bills[2] + tips[0] + tips[1] + tips[2]];
+// console.log(totals);
