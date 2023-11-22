@@ -337,3 +337,36 @@ GOOD LUCK 😀
 
 // const totals = [bills[0] + bills[1] + bills[2] + tips[0] + tips[1] + tips[2]];
 // console.log(totals);
+
+// challenge 3/////////////////////////////////////////////////////////////////
+
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI() {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI;
+//   },
+// };
+// const john = {
+//   fullName: "John Johnson",
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI() {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI;
+//   },
+// };
+
+// if (john.calcBMI() > mark.calcBMI()) {
+//   console.log(
+//     `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI} !) `
+//   );
+// } else {
+//   console.log(
+//     `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})! `
+//   );
+// }
+// // mark.calcBMI()
+// console.log(mark);
