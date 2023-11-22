@@ -98,7 +98,7 @@
 // const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
 
-// CHALLENGE 1 ///////////////////////////////////////////////////////////////////////
+// CHALLENGE 1 ////////          SECTION 9           /////////////////////////////////
 
 // // 1. Create one player array for each team (variables 'players1' and 'players2')
 
@@ -299,3 +299,26 @@ GOOD LUCK 😀
 //   const half = minute >= 45 ? `SECOND` : `FIRST`
 //   console.log(`${half} half minute ${minute}: ${event}`);
 // }
+
+// FUNDAMENTALS PART 2 ///////////////////////////////////////////////////////////////
+
+
+// CHALLENGE #1 /////////////////////////////////////////////////////////////////////
+// const scoreDolphins = calcAverage(44, 23, 71);
+// const scoreKoalas = calcAverage(65, 54, 49);
+// console.log(scoreDolphins, scoreKoalas);
+
+// const scoredolphins2 = calcAverage(85, 54, 41);
+// const scoreKoalas2 = calcAverage(23, 34, 27);
+
+// const checkWinner = function(avgDolphins, avgKoalas) {
+//   if (avgDolphins >= avgKoalas * 2) {
+//     console.log(`Dolphins win (${avgDolphins} vs ${avgKoalas})`);
+//   } else if (avgKoalas >= avgDolphins * 2) {
+//     console.log(`Koalas win (${avgKoalas} vs ${avgDolphins})`);
+//   } else {
+//     console.log("No team wins..");
+//   }
+// }
+// checkWinner(scoreDolphins, scoreKoalas);
+// checkWinner(scoredolphins2, scoreKoalas2)
