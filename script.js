@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 // First exercise
 // const massMark = 78;
 // const heightMark = 1.69;
@@ -58,7 +58,6 @@
 //   console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`);
 // }
 
-
 // Third exercise from course
 // const dolphins = [96, 108, 89];
 // const koalas = [88, 91, 110];
@@ -70,7 +69,6 @@
 //   }
 //   return score
 // }
-
 
 // let scoreDolphins = 0
 // for (let i = 0; i < dolphins.length; i++) {
@@ -96,7 +94,6 @@
 // const tip = bill >= 50 && bill <=300 ? bill*0.15 : bill*0.2
 // console.log(`The bill was ${bill}, the tip was ${tip}, and the final value was ${bill + tip}`);
 // const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
-
 
 // CHALLENGE 1 ////////          SECTION 9           /////////////////////////////////
 
@@ -140,47 +137,47 @@
 //  team1 < team2 && console.log(`Team 1 is more likely to win`)
 //  team1 > team2 && console.log(`Team 1 is more likely to win`)
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-      [
-        'Neuer',
-        'Pavard',
-        'Martinez',
-        'Alaba',
-        'Davies',
-        'Kimmich',
-        'Goretzka',
-        'Coman',
-        'Muller',
-        'Gnarby',
-        'Lewandowski',
-      ],
-      [
-        'Burki',
-        'Schulz',
-        'Hummels',
-        'Akanji',
-        'Hakimi',
-        'Weigl',
-        'Witsel',
-        'Hazard',
-        'Brandt',
-        'Sancho',
-        'Gotze',
-      ],
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
     ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-      team1: 1.33,
-      x: 3.25,
-      team2: 6.5,
-    },
-  };
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
-  /* CHALLENGE #2
+/* CHALLENGE #2
 Let's continue with our football betting app!
 
 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
@@ -301,7 +298,6 @@ GOOD LUCK 😀
 // }
 
 // FUNDAMENTALS PART 2 ///////////////////////////////////////////////////////////////
-
 
 // CHALLENGE #1 /////////////////////////////////////////////////////////////////////
 // const scoreDolphins = calcAverage(44, 23, 71);
@@ -607,3 +603,36 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]); */
 // ASYNC JAVASCRIPT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /* api https://countries-api-836d.onrender.com/countries/ */
 
+const btn = document.querySelector(".btn-country");
+const countriesContainer = document.querySelector(".countries");
+
+///////////////////////////////////////////////////////////////////
+const getCountryData = (country) => {
+
+const request = new XMLHttpRequest();
+request.open("GET", `https://restcountries.com/v2/name/${country}`);
+request.send();
+
+request.addEventListener("load", function () {
+  const [data] = JSON.parse(this.responseText);
+  console.log(data);
+
+  const html = `<article class="country">
+  <img class="country__img" src="${data.flag}" />
+  <div class="country__data">
+    <h3 class="country__name">${data.name}</h3>
+    <h4 class="country__region">${data.region}</h4>
+    <p class="country__row"><span>👫</span>${(
+      +data.population / 1000000
+    ).toFixed(1)} people</p>
+    <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+    <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+  </div>
+</article>`;
+  countriesContainer.insertAdjacentHTML("beforeend", html);
+  countriesContainer.style.opacity = 1;
+});
+}
+
+getCountryData('montenegro')
+getCountryData('serbia')
