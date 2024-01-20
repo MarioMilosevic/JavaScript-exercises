@@ -507,7 +507,7 @@ GOOD LUCK 😀
 //     .reduce((acc, curr) => acc + curr, 0)
 //     .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
 
-/ Coding Challenge #4 ///////////////////////////////////////////////////////////////
+// Coding Challenge #4 ///////////////////////////////////////////////////////////////
 
 /* 
 Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
@@ -602,4 +602,4 @@ const checkDogs = function (dogsJulia, dogsKate) {
   });
 };
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]); */
