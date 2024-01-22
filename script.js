@@ -651,7 +651,12 @@ const renderCountry = (data, className = "") => {
     </div>
   </article>`;
   countriesContainer.insertAdjacentHTML("beforeend", html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
+};
+
+const renderError = (msg) => {
+  countriesContainer.insertAdjacentText("beforeend", msg);
+  // countriesContainer.style.opacity = 1;
 };
 
 // const getCountryDataAndNeighbour = (country) => {
@@ -721,10 +726,19 @@ const getCountryData = (country) => {
       const neighbour = data[0].borders[0];
       if (!neighbour) return;
       // Country 2
-      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)})
         .then((response) => response.json())
-        .then((data) => renderCountry(data, "neighbour"));
-    });
+        .then((data) => renderCountry(data, "neighbour"))
+        .catch((err) => {
+          console.error(`${err} 💣💣💣`);
+          renderError(`Something went wrong ${err.message}. Try again !`)
+        }).finally(() => {
+          countriesContainer.style.opacity = 1
+        })
 };
 
-getCountryData("montenegro");
+btn.addEventListener("click", function () {
+  getCountryData("montenegro");
+});
+
+getCountryData("fafafa");
