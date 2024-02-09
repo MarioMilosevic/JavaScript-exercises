@@ -1,5 +1,7 @@
 "use strict";
 
+import Dashboard from "./views/Dashboard";
+
 const navigateTo = (url) => {
   history.pushState(null, null, url);
   router();
@@ -7,9 +9,9 @@ const navigateTo = (url) => {
 
 const router = async () => {
   const routes = [
-    { path: "/", view: () => console.log("Viewing Dashboard") },
-    { path: "/posts", view: () => console.log("Viewing Posts") },
-    { path: "/settings", view: () => console.log("Viewing Settings") },
+    { path: "/", view: () => Dashboard},
+    // { path: "/posts", view: () => console.log("Viewing Posts") },
+    // { path: "/settings", view: () => console.log("Viewing Settings") },
   ];
   // Test each root for potential match
   const potentialMatches = routes.map((route) => {
@@ -25,7 +27,10 @@ const router = async () => {
       isMatch: true,
     };
   }
-  console.log(match.route.view());
+  const view = new match.route.view();
+  console.log(view);
+
+  document.querySelector("#app").innerHTML = await view.getHtml()
 };
 
 window.addEventListener("popstate", router);
