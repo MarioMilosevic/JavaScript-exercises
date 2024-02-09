@@ -1,5 +1,11 @@
 "use strict";
 
+const navigateTo = (url) => {
+    history.pushState(null, null, url)
+    router()
+}
+
+
 const router = async () => {
   const routes = [
     { path: "/", view: () => console.log("Viewing Dashboard") },
@@ -24,6 +30,7 @@ const router = async () => {
   }
 
   console.log(match);
+  console.log(match.route.view());
 };
 
 document.addEventListener("DOMContentLoaded", function () {
