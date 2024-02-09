@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 // First exercise
 // const massMark = 78;
 // const heightMark = 1.69;
