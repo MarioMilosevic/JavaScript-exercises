@@ -1,43 +1,17 @@
-// Q1: Create a counter function which has increment and getValue
-// functionality
-// const counter = privateCounter();
-// console.log(counter.getValue()); // 0
-// counter.increment();
-// console.log(counter.getValue()); // 1
+// Q1: Write a function which get’s an array and an element and returns
+// an array with this element at the end.
 
-function privateCounter() {
-  let count = 0;
-  function increment() {
-    count = count + 1;
-  }
-  function getValue() {
-    return count;
-  }
+// const numbers = [1, 2];
+// const newNumbers = append(numbers, 3);
+// console.log(newNumbers, numbers); // [1,2,3]
 
-  return {
-    increment,
-    getValue,
-  };
+const numbers = [1, 2];
+
+function append(arr, element) {
+  arr.push(element);
+  return arr;
+  return [...arr, element];
 }
 
-const counter = privateCounter();
-console.log(counter.getValue()); // 0
-counter.increment();
-console.log(counter.getValue()); // 1
-
-// – Q2: Create a function which stores a secret string inside which is not
-// accessible but is returned only when we call this function.
-// const getSecret = privateSecret();
-// console.log(getSecret()); //'secret'
-
-function privateSecret() {
-  const secret = "secret";
-
-  return function getSecret() {
-    return secret;
-  };
-}
-
-const getSecret = privateSecret();
-
-console.log(getSecret());
+const newNumbers = append(numbers, 3);
+console.log(newNumbers);
