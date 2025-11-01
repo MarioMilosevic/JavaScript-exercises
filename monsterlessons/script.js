@@ -1,13 +1,13 @@
-// Q1: Write a function which implements a range
-// console.log(range(1, 50)); // [1,2,3,4,5...,50]
+// ting Shuffle Function
+// – Q1: Write a shuffle function which mixes the elements
+// console.log(shuffleItems([1, 2]));
 
-function range(from, to) {
-  const arr = [];
-  arr.push(from);
-  for (let i = from + 1; i <= to; i++) {
-    arr.push(i);
+function shuffleItems(items) {
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
   }
-  return arr;
+  return items;
 }
 
-console.log(range(1, 50));
+console.log(shuffleItems([1, 2]));
