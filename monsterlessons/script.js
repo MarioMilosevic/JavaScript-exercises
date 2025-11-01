@@ -1,13 +1,14 @@
-//  Q1: Write a function which accepts a list of users and a name to
-// check if such user exists in the array.
-function isNameExists(name, users) {
-  return users.some((user) => user.name === name);
-}
-
-const users = [
-  { id: 1, name: "Jack", isActive: true },
-  { id: 2, name: "John", isActive: true },
-  { id: 3, name: "Mike", isActive: false },
+//  Q2: Sort an array of objects by author’s lastname
+const books = [
+  { name: "Harry Potter", author: "Joanne Rowling" },
+  { name: "Warcross", author: "Marie Lu" },
+  { name: "THe Hunger Games", author: "Suzanne Collins" },
 ];
 
-console.log(isNameExists("Jack", users)); // true
+books.sort((a, b) => {
+  const firstLastName = a.author.split(" ")[1];
+  const secondLastName = b.author.split(" ")[1];
+  return firstLastName.localeCompare(secondLastName);
+});
+
+console.log(books);
