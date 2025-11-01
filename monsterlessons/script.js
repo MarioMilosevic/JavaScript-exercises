@@ -1,17 +1,13 @@
-// Q1: Write a function which get’s an array and an element and returns
-// an array with this element at the end.
-
-// const numbers = [1, 2];
-// const newNumbers = append(numbers, 3);
-// console.log(newNumbers, numbers); // [1,2,3]
-
-const numbers = [1, 2];
-
-function append(arr, element) {
-  arr.push(element);
-  return arr;
-  return [...arr, element];
+//  Q1: Write a function which accepts a list of users and a name to
+// check if such user exists in the array.
+function isNameExists(name, users) {
+  return users.some((user) => user.name === name);
 }
 
-const newNumbers = append(numbers, 3);
-console.log(newNumbers);
+const users = [
+  { id: 1, name: "Jack", isActive: true },
+  { id: 2, name: "John", isActive: true },
+  { id: 3, name: "Mike", isActive: false },
+];
+
+console.log(isNameExists("Jack", users)); // true
