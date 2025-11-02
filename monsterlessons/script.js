@@ -1,25 +1,22 @@
-// • Find the Number of Occurences of Minimum Value in List
-//  – Q1: Find the number of occurrences of minimum value in the list of numbers
+// Highlight All Words Over 8 Chars With Yellow
+// – Q1: Highlight all of the words in markup over 8 characters long in
+// the paragraph text (with a yellow background for example)
 
-const numbers = [3, 1, 2, 1, 4, 1, 1, 1, 1];
+const paragraph = document.getElementById("paragraph");
+console.dir(paragraph);
 
-// Step 1 → Find the minimum number in the array.
-const minNum = Math.min(...numbers);
+const text = paragraph.innerText;
 
-// Step 2 → Count how many times that number appears.
+const words = text.split(" ");
+console.log(words);
 
-// Step 3 → Return or print that count.
-
-function occurences(numbers) {
-  let count = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    const minNum = Math.min(...numbers);
-
-    if (numbers[i] === minNum) {
-      count++;
+const higlightedWords = words
+  .map((word) => {
+    if (word.length > 10) {
+      return `<span style="background-color: yellow">${word}</span>`;
     }
-  }
-  return count;
-}
+    return word;
+  })
+  .join(" ");
 
-console.log(occurences(numbers));
+paragraph.innerHTML = higlightedWords;
