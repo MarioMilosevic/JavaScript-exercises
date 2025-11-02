@@ -1,22 +1,16 @@
-// Highlight All Words Over 8 Chars With Yellow
-// – Q1: Highlight all of the words in markup over 8 characters long in
-// the paragraph text (with a yellow background for example)
+//  Add a Link
+// – Q1: Add a link “Back to source” after a paragraph tag which goes to
+// https://forcemipsum.com in the markup
 
 const paragraph = document.getElementById("paragraph");
 console.dir(paragraph);
 
-const text = paragraph.innerText;
+const body = paragraph.parentElement;
 
-const words = text.split(" ");
-console.log(words);
+const link = document.createElement("a");
+link.textContent = "Back to source";
+link.href = "https://forcemipsum.com";
 
-const higlightedWords = words
-  .map((word) => {
-    if (word.length > 10) {
-      return `<span style="background-color: yellow">${word}</span>`;
-    }
-    return word;
-  })
-  .join(" ");
+console.dir(link);
 
-paragraph.innerHTML = higlightedWords;
+body.appendChild(link);
