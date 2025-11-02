@@ -1,16 +1,24 @@
-//  Add a Link
-// – Q1: Add a link “Back to source” after a paragraph tag which goes to
-// https://forcemipsum.com in the markup
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
 
-const paragraph = document.getElementById("paragraph");
-console.dir(paragraph);
+// Configure it: GET-request for the URL
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
 
-const body = paragraph.parentElement;
+// Set up a function to handle the response
+xhr.onload = function () {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    // Parse JSON response
+    const data = JSON.parse(xhr.responseText);
+    console.log("Data received:", data);
+  } else {
+    console.error("Error fetching data. Status:", xhr.status);
+  }
+};
 
-const link = document.createElement("a");
-link.textContent = "Back to source";
-link.href = "https://forcemipsum.com";
+// Handle network errors
+xhr.onerror = function () {
+  console.error("Network error occurred.");
+};
 
-console.dir(link);
-
-body.appendChild(link);
+// Send the request
+xhr.send();
