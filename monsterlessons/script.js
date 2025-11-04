@@ -1,19 +1,18 @@
-const vowels = ["a", "e", "i", "o", "u"];
+// convert a string to give title case
 
-function countVowels(word) {
-  const letters = word.split("");
-  console.log(letters);
-  let count = 0;
-  for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i];
-    const isVowel = vowels.find((vowel) => vowel === letter);
-    if (isVowel) {
-      count++;
-      console.log(isVowel);
-    }
+function everyWordToUppercase(word) {
+  const lowerCase = word.toLowerCase();
+  const words = lowerCase.split(" ");
+  const transformedWords = [];
+  for (let i = 0; i < words.length; i++) {
+    const letters = words[i].split("");
+    const firstLetterToUpperCase = letters[0].toUpperCase();
+    letters[0] = firstLetterToUpperCase;
+    const word = letters.join("");
+    transformedWords.push(word);
   }
-  console.log(count);
-  return count;
+
+  return transformedWords.join(" ");
 }
 
-countVowels("michelangelo");
+everyWordToUppercase("MaRiO jE kraLj IGRICE");
