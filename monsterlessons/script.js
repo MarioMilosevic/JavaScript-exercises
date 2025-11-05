@@ -1,18 +1,21 @@
-// convert a string to give title case
+//  Replace Parameters in URL
+// – Q1: Write a function to replace parameters in url
+const initalUrl = "/posts/:postId/comments/:commentId";
 
-function everyWordToUppercase(word) {
-  const lowerCase = word.toLowerCase();
-  const words = lowerCase.split(" ");
-  const transformedWords = [];
-  for (let i = 0; i < words.length; i++) {
-    const letters = words[i].split("");
-    const firstLetterToUpperCase = letters[0].toUpperCase();
-    letters[0] = firstLetterToUpperCase;
-    const word = letters.join("");
-    transformedWords.push(word);
+function replaceParamsInUrl(url, optionsArr) {
+  const words = url.split("/");
+  console.log(words);
+  for (let i = 0; i < optionsArr.length; i++) {
+    const from = optionsArr[i].from;
+    const to = optionsArr[i].to;
+    const urlParamIndex = words.findIndex((word) => word.includes(from));
+    words[urlParamIndex] = to;
   }
-
-  return transformedWords.join(" ");
+  const updatedWords = words.join("/");
+  return updatedWords;
 }
 
-everyWordToUppercase("MaRiO jE kraLj IGRICE");
+const resultUrl = replaceParamsInUrl(initalUrl, [
+  { from: "postId", to: "1" },
+  { from: "commentId", to: "3" },
+]); // /posts/1/comments/3
