@@ -1,21 +1,36 @@
-//  Replace Parameters in URL
-// – Q1: Write a function to replace parameters in url
-const initalUrl = "/posts/:postId/comments/:commentId";
+//  Validation Messages
+// – Q1: Format backend validation message to frontend format
+const backendErrors = {
+  email: {
+    errors: [{ message: "Can't be blank" }],
+  },
+  password: {
+    errors: [
+      { message: "Must contain symbols in different case" },
+      { message: "Must be at least 8 symbols length" },
+    ],
+  },
+  passwordConfirmation: {
+    errors: [{ message: "Must match with password" }],
+  },
+};
+// Result
+// [
+// "Email: Can't be blank",
+// "Password: Must contain symbols in different case, Must be at least 8 symbols,
+// "PasswordConfirmation: Must match with password"
+//  ]
 
-function replaceParamsInUrl(url, optionsArr) {
-  const words = url.split("/");
-  console.log(words);
-  for (let i = 0; i < optionsArr.length; i++) {
-    const from = optionsArr[i].from;
-    const to = optionsArr[i].to;
-    const urlParamIndex = words.findIndex((word) => word.includes(from));
-    words[urlParamIndex] = to;
+function formatErrors(errorsObj) {
+  const formattedErrors = [];
+
+  for (const [key, value] of Object.entries(errorsObj)) {
+    const fieldName = key.charAt(0).toUpperCase() + key.slice(1);
+    const messages = value.errors.map((err) => err.message).join(", ");
+    formattedErrors.push(`${fieldName}: ${messages}`);
   }
-  const updatedWords = words.join("/");
-  return updatedWords;
+
+  return formattedErrors;
 }
 
-const resultUrl = replaceParamsInUrl(initalUrl, [
-  { from: "postId", to: "1" },
-  { from: "commentId", to: "3" },
-]); // /posts/1/comments/3
+console.log(formatErrors(backendErrors));
