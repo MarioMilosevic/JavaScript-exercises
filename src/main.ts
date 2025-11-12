@@ -27,10 +27,10 @@ const numbers = [1, 3, 7, 9, 2];
 const target = 11;
 
 const findIndexesByTarget = (nums: number[], target: number) => {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
+  for (let p1 = 0; p1 < nums.length; p1++) {
+    for (let p2 = 1; p2 < nums.length; p2++) {
+      if (nums[p1] + nums[p2] === target) {
+        return [p1, p2];
       }
     }
   }
