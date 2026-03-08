@@ -1,12 +1,16 @@
-// Q1: Write a function which get’s an array and an element and returns
-// an array with this element at the end.
+// Remove All Duplicates in the Array
+// – Q1: Write a function which removes all duplicates from the array.
 
-function append(arr: number[], element: number) {
-  const copy = [...arr];
-  copy.push(element);
-  return copy;
+function uniqueArr(arr: number[]) {
+  const unique: number[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    const currentNumber = arr[i];
+    const alreadyExists = unique.some((num) => num === currentNumber);
+    if (!alreadyExists) {
+      unique.push(currentNumber);
+    }
+  }
+  return unique;
 }
 
-const numbers = [1, 2];
-const newNumbers = append(numbers, 3);
-console.log(newNumbers, numbers); // [1,2,3]
+console.log(uniqueArr([1, 1, 2])); // [1,2]
