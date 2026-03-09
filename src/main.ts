@@ -1,26 +1,29 @@
-interface Person {
-  id: number;
-  name: string;
-}
+// // // Sort the array of numbers
 
-const people: Person[] = [
-  { id: 1, name: "Mario" },
-  { id: 1, name: "Mario" },
-  { id: 2, name: "Anna" },
+// // const exampleNumbers = [5, 3, 2, 9, 6, 1, 8, 4, 7];
+
+// // function sortNumers(numbers: number[]) {
+// //   const copy = [...numbers];
+// //   copy.sort((a, b) => b - a);
+// //   console.log(copy);
+// // }
+
+// // sortNumers(exampleNumbers);
+
+// // Q2: Sort an array of objects by author’s lastname
+const books = [
+  { name: "Harry Potter", author: "Joanne Rowling" },
+  { name: "Warcross", author: "Marie Lu" },
+  { name: "The Hunger Games", author: "Suzanne Collins" },
 ];
+function sortByName(booksArr: { name: string; author: string }[]) {
+  const sorted = [...booksArr].sort((a, b) => {
+    const lastNameA = a.author.split(" ")[1];
+    const lastNameB = b.author.split(" ")[1];
 
-function uniqueArr(arr: Person[]) {
-  const unique: Person[] = [];
-  for (let i = 0; i < arr.length; i++) {
-    const currentPerson = arr[i];
-    const alreadyExists = unique.some(
-      (person) => person.id === currentPerson.id,
-    );
-    if (!alreadyExists) {
-      unique.push(currentPerson);
-    }
-  }
-  return unique;
+    return lastNameA.localeCompare(lastNameB);
+  });
+  console.log(sorted);
 }
 
-console.log(uniqueArr(people));
+sortByName(books);
