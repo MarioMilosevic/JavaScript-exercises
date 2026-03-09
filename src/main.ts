@@ -1,29 +1,12 @@
-// // // Sort the array of numbers
+// Q1: Write a function which implements a range
+// console.log(range(1, 50)); // [1,2,3,4,5...,50]
 
-// // const exampleNumbers = [5, 3, 2, 9, 6, 1, 8, 4, 7];
-
-// // function sortNumers(numbers: number[]) {
-// //   const copy = [...numbers];
-// //   copy.sort((a, b) => b - a);
-// //   console.log(copy);
-// // }
-
-// // sortNumers(exampleNumbers);
-
-// // Q2: Sort an array of objects by author’s lastname
-const books = [
-  { name: "Harry Potter", author: "Joanne Rowling" },
-  { name: "Warcross", author: "Marie Lu" },
-  { name: "The Hunger Games", author: "Suzanne Collins" },
-];
-function sortByName(booksArr: { name: string; author: string }[]) {
-  const sorted = [...booksArr].sort((a, b) => {
-    const lastNameA = a.author.split(" ")[1];
-    const lastNameB = b.author.split(" ")[1];
-
-    return lastNameA.localeCompare(lastNameB);
-  });
-  console.log(sorted);
+function range(a: number, b: number) {
+  const rangedArray = [];
+  for (let i = a; i <= b; i++) {
+    rangedArray.push(i);
+  }
+  console.log(rangedArray);
 }
 
-sortByName(books);
+range(45, 50);
