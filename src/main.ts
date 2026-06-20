@@ -1,15 +1,12 @@
-// Q1: Write a function which accepts a list of users and a name to
-// check if such user exists in the array.
-const users = [
-  { id: 1, name: "Jack", isActive: true },
-  { id: 2, name: "John", isActive: true },
-  { id: 3, name: "Mike", isActive: false },
-];
+// Q1: Write a function which implements a range
 
-function isNameExists(
-  name: string,
-  names: { id: number; name: string; isActive: boolean }[],
-) {
-  return names.some((n) => n.name === name);
+function range(start: number, end: number) {
+  const arr: number[] = [];
+  for (let i = start; i <= end; i++) {
+    arr.push(i);
+  }
+  return arr;
 }
-console.log(isNameExists("Jack", users)); // true
+
+console.log(range(1, 50)); // [1,2,3,4,5...,50]
+console.log(range(39, 46)); // [1,2,3,4,5...,50]
