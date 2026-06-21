@@ -1,12 +1,30 @@
-// Q1: Write a function which implements a range
+// – Q1: Create a throttle function
 
-function range(start: number, end: number) {
-  const arr: number[] = [];
-  for (let i = start; i <= end; i++) {
-    arr.push(i);
-  }
-  return arr;
+function throttle(cb: () => void, time: number) {
+  let canCall = true;
+  return function (...args) {
+    if (canCall) {
+      cb(...args);
+      canCall = false;
+      setTimeout(() => {
+        canCall = true;
+      }, time);
+    }
+  };
 }
 
-console.log(range(1, 50)); // [1,2,3,4,5...,50]
-console.log(range(39, 46)); // [1,2,3,4,5...,50]
+const saveInput = (name) => console.log("saveInput", name);
+const processChange = throttle(saveInput, 2000);
+
+processChange("foo");
+setTimeout(() => {
+  processChange("foo");
+}, 1000);
+setTimeout(() => {
+  processChange("foo");
+}, 1200);
+setTimeout(() => {
+  processChange("foo");
+}, 2400);
+processChange("foo");
+processChange("foo");
