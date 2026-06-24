@@ -1,58 +1,45 @@
-// – Q1: You have 2 functions which return promises. Map data from
-// getUsers and getUserStatuses to get array of users with id, name,
-// isActive
-const users = [
-  { id: 1, name: "Jack" },
-  { id: 2, name: "John" },
-  { id: 3, name: "Mike" },
-];
-const userStatuses = [
-  { id: 1, isActive: true },
-  { id: 2, isActive: true },
-  { id: 3, isActive: false },
-];
-const getUsers = () => {
-  return new Promise((resolve) => {
-    resolve(users);
-  });
-};
-const getUserStatuses = () => {
-  return new Promise((resolve) => {
-    resolve(userStatuses);
-  });
-};
+// Q1: Design an utility which takes URL and a value for attempts
+// which will attempt to make a fetch request. If on failure it tries again
+// with increasing delay for number of times which user has requested.
 
-async function usersAndStatuses(cb1, cb2) {
-  const arr = [];
-  const [users, userStatuses] = await Promise.all([cb1(), cb2()]);
-  for (let i = 0; i < users.length; i++) {
-    const { isActive } = userStatuses.find(
-      (status) => status.id === users[i].id,
-    );
-    const user = { ...users[i], isActive };
-    arr.push(user);
-  }
-  return arr;
+// Pokušaj fetch("http://foo.com")
+// Ako uspije → vrati rezultat (resolve)
+// Ako ne uspije:
+// sačekaj npr. 1 sekundu
+// pokušaj opet
+// Ako opet ne uspije:
+// sačekaj 2 sekunde
+// pokušaj opet
+// Ako ni treći put ne uspije:
+// baci grešku (reject)
+
+requestManager("http://foo.com", {}, 3).then((response) => {
+  console.log(response);
+});
+
+function requestManager(url: string, body, attempts: number) {
+  return new Promise((resolve, reject) => {
+    let tries = 0;
+
+    function makeRequest() {
+      fetch(url)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          tries++;
+
+          if (tries === attempts) {
+            reject(error);
+            return;
+          }
+
+          setTimeout(() => {
+            makeRequest();
+          }, tries * 1000);
+        });
+    }
+
+    makeRequest();
+  });
 }
-
-// function usersAndUserStatuses(cb1, cb2) {
-//   const arr = [];
-//   return Promise.all([cb1(), cb2()]).then(([users, userStatuses]) => {
-//     for (let i = 0; i < users.length; i++) {
-//       const { isActive } = userStatuses.find(
-//         (status) => status.id === users[i].id,
-//       );
-//       const user = { ...users[i], isActive };
-//       arr.push(user);
-//     }
-//     return arr;
-//   });
-// }
-
-const mario = await usersAndStatuses(getUsers, getUserStatuses);
-console.log(mario);
-
-// let usersAndStatuses = usersAndUserStatuses(getUsers, getUserStatuses).then(
-//   (data) => (usersAndStatuses = data),
-// );
-// console.log(usersAndStatuses);
