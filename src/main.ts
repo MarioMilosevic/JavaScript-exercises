@@ -1,45 +1,63 @@
-// Q1: Design an utility which takes URL and a value for attempts
-// which will attempt to make a fetch request. If on failure it tries again
-// with increasing delay for number of times which user has requested.
+// deepCompare(a, b)
 
-// Pokušaj fetch("http://foo.com")
-// Ako uspije → vrati rezultat (resolve)
-// Ako ne uspije:
-// sačekaj npr. 1 sekundu
-// pokušaj opet
-// Ako opet ne uspije:
-// sačekaj 2 sekunde
-// pokušaj opet
-// Ako ni treći put ne uspije:
-// baci grešku (reject)
+// jesu li oba primitivni tipovi?
+//     -> uporedi ===
 
-requestManager("http://foo.com", {}, 3).then((response) => {
-  console.log(response);
-});
+// jesu li oba objekti?
+//     -> imaju li isti broj ključeva?
 
-function requestManager(url: string, body, attempts: number) {
-  return new Promise((resolve, reject) => {
-    let tries = 0;
+//     za svaki ključ
+//         ako je vrijednost objekat
+//             deepCompare(...)
+//         inače
+//             ===
 
-    function makeRequest() {
-      fetch(url)
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          tries++;
+// ako je sve prošlo
+//     true
 
-          if (tries === attempts) {
-            reject(error);
-            return;
-          }
+function shallowComparison(element1: object, element2: object) {
+  const keys1 = Object.keys(element1);
+  const keys2 = Object.keys(element2);
 
-          setTimeout(() => {
-            makeRequest();
-          }, tries * 1000);
-        });
-    }
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
 
-    makeRequest();
+  return keys1.every((key) => element1[key] === element2[key]);
+}
+
+function deepComparison(obj1, obj2) {
+  // ako nisu objekti
+  if (obj1 !== Object(obj1) || obj2 !== Object(obj2)) {
+    return obj1 === obj2;
+  }
+
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  return keys1.every((key) => {
+    return deepComparison(obj1[key], obj2[key]);
   });
 }
+
+const obj1 = {
+  user: {
+    profile: {
+      age: 25,
+    },
+  },
+};
+
+const obj2 = {
+  user: {
+    profile: {
+      age: 25,
+    },
+  },
+};
+
+deepComparison(obj1, obj2);
