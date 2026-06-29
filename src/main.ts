@@ -1,63 +1,23 @@
-// deepCompare(a, b)
+// Q1: Design a function which returns a fibonacci sequence value
 
-// jesu li oba primitivni tipovi?
-//     -> uporedi ===
+// 0 + 1
+// a + b = result
+// result + result = newResult
+//  newResult = newResult + newResult
 
-// jesu li oba objekti?
-//     -> imaju li isti broj ključeva?
+// 1,2,3,5,8,13
 
-//     za svaki ključ
-//         ako je vrijednost objekat
-//             deepCompare(...)
-//         inače
-//             ===
-
-// ako je sve prošlo
-//     true
-
-function shallowComparison(element1: object, element2: object) {
-  const keys1 = Object.keys(element1);
-  const keys2 = Object.keys(element2);
-
-  if (keys1.length !== keys2.length) {
-    return false;
+function fibonnaci() {
+  const numbers = [];
+  let firstNumber = 0;
+  let secondNumber = 1;
+  for (let i = 0; i < 10; i++) {
+    const nextNumber = firstNumber + secondNumber;
+    firstNumber = secondNumber;
+    secondNumber = nextNumber;
+    numbers.push(nextNumber);
   }
-
-  return keys1.every((key) => element1[key] === element2[key]);
+  return numbers;
 }
 
-function deepComparison(obj1, obj2) {
-  // ako nisu objekti
-  if (obj1 !== Object(obj1) || obj2 !== Object(obj2)) {
-    return obj1 === obj2;
-  }
-
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
-
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-
-  return keys1.every((key) => {
-    return deepComparison(obj1[key], obj2[key]);
-  });
-}
-
-const obj1 = {
-  user: {
-    profile: {
-      age: 25,
-    },
-  },
-};
-
-const obj2 = {
-  user: {
-    profile: {
-      age: 25,
-    },
-  },
-};
-
-deepComparison(obj1, obj2);
+console.log(fibonnaci());
