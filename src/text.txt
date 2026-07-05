@@ -1,0 +1,23 @@
+S.O.L.I.D.
+
+Single responsibility principle
+1 fajl ima odgovornost za jednu stvar tipa komponenta u reactu treba da bude odgovorna za 1 stvar
+
+Open closed principle
+
+Sistemi trebaju da budu otvoreni za prosirivanje, a zatvoreni za modifikovanje
+
+Liksov 
+
+ako klasa b nasledjuje svojstva klase a, nista ne smije da pukne, ne smije koriscenje klase b da utice na koriscenje klae a 
+
+Intergation 
+
+vise malih interfejsa, ne jedan veliki
+
+Dependency
+
+prima podatke spolja, ne hardkoduje unutra
+
+
+
