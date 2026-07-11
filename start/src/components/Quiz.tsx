@@ -16,21 +16,35 @@ const Quiz = () => {
     loadQuestions().then((data) => setQuestions(data));
   }, []);
 
-  const currentQuestion = questions[0];
+  const currentQuestion = questions[currentQuestionIndex];
 
   const currentQuestionAnswers = useMemo(() => {
     return shuffleAnswers(currentQuestion);
   }, [currentQuestion]);
 
   const selectAnswer = (answerText: string) => {
+    setCurrentAnswer(answerText);
     if (answerText === questions[currentQuestionIndex].correctAnswer) {
-      console.log("tacan odgovor");
-      // setCorrectAnswersCount((previous) => previous++);
-    } else {
-      console.log("netacan odgovor");
+      setCorrectAnswersCount((previous) => previous + 1);
     }
     setHasAnsweredCurrentQuestion(true);
-    // setShowResults(true);
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex === questions.length - 1) {
+      setShowResults(true);
+      return;
+    }
+    setCurrentAnswer("");
+    setHasAnsweredCurrentQuestion(false);
+    setCurrentQuestionIndex((previous) => previous + 1);
+  };
+
+  const handleRestart = () => {
+    setShowResults(false);
+    setCurrentQuestionIndex(0);
+    setCurrentAnswer("");
+    setHasAnsweredCurrentQuestion(false);
   };
 
   return (
@@ -45,7 +59,9 @@ const Quiz = () => {
               {questions.length} right.
             </div>
           </div>
-          <div className="next-button">Restart</div>
+          <div onClick={handleRestart} className="next-button">
+            Restart
+          </div>
         </div>
       )}
       {!showResults && questions.length > 0 && (
@@ -60,7 +76,9 @@ const Quiz = () => {
             setCurrentAnswer={(answerText) => selectAnswer(answerText)}
           />
           {hasAnsweredCurrentQuestion && (
-            <div className="next-button">Next question</div>
+            <div onClick={handleNextQuestion} className="next-button">
+              Next question
+            </div>
           )}
         </div>
       )}
