@@ -1,0 +1,19 @@
+{
+  "views": [
+    {
+      "id": 2,
+      "title": "custom view big",
+      "content": "{\"questions\":[{\"questionName\":\"question 12345632\",\"answers\":[{\"text\":\"answer 1 11\"},{\"text\":\"answer 1 2\"}]},{\"questionName\":\"question 2\",\"answers\":[{\"text\":\"answer  2 1\"}]}]}"
+    },
+    {
+      "id": 3,
+      "title": "custom view small",
+      "content": "{\"questions\":[{\"questionName\":\"question 1 upd2\",\"answers\":[{\"text\":\"answer 1 1\"},{\"text\":\"answer 1 2 3\"}]}]}"
+    },
+    {
+      "title": "ddd",
+      "content": "{\"questions\":[]}",
+      "id": 4
+    }
+  ]
+}
