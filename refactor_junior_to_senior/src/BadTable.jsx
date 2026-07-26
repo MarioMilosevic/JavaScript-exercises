@@ -77,7 +77,7 @@ function BadTable({ issues }) {
             : classes.resolvedIssue;
 
           return (
-            <tr className={stylesTr} style={checkedState[index]} key={index}>
+            <tr className={stylesTr} style={checkedState[index]} key={id}>
               <td>
                 {issueIsOpen ? (
                   <input
